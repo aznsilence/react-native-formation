@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Button } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -10,6 +11,8 @@ import RegisterScreen from '../screens/RegisterScreen'
 import { useAuth } from '../contexts/AuthContext'
 import LoadingScreen from '../screens/LoadingScreen'
 import RestaurantDetailsScreen from '../screens/RestaurantDetailsScreen'
+import CartScreen from '../screens/CartScreen'
+import { useNavigation } from '@react-navigation/native'
 // import CounterScreen from '../screens/CounterScreen'
 
 // On instancie la navigation par onglets
@@ -57,6 +60,13 @@ const RestaurantsNavigation = () => {
             title: 'Chargement...'
           }}
         />
+        <RestaurantsNavigator.Screen
+          name='Cart'
+          component={CartScreen}
+          options={{
+            title: 'Mon panier'
+          }}
+        />
       </RestaurantsNavigator.Group>
     </RestaurantsNavigator.Navigator>
   )
@@ -64,6 +74,7 @@ const RestaurantsNavigation = () => {
 
 // On crée notre navigateur avec nos écrans
 const MainNavigation = () => {
+  const navigation = useNavigation()
   return (
     <TabNavigator.Navigator
       // Force l'affichage sur une page en particulier
@@ -99,7 +110,15 @@ const MainNavigation = () => {
           name='Restaurants'
           component={RestaurantsNavigation}
           options={{
-            headerShown: false
+            headerShown: true,
+            title: '',
+            headerRight: () => (
+              <Button
+                onPress={() => navigation.navigate('Cart')}
+                title='Cart'
+                color='black'
+              />
+            )
           }}
         />
       </TabNavigator.Group>

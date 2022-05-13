@@ -19,6 +19,7 @@ import {
 // } from 'react-native/Libraries/NewAppScreen'
 // import Clock from './components/ClockFunction'
 import { AuthProvider } from './contexts/AuthContext'
+import { CartProvider } from './contexts/CartContext'
 import MainNavigation from './navigation/Navigator'
 
 const App = () => {
@@ -28,9 +29,11 @@ const App = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <AuthProvider>
-        <NavigationContainer>
-          <MainNavigation />
-        </NavigationContainer>
+        <CartProvider>
+          <NavigationContainer>
+            <MainNavigation />
+          </NavigationContainer>
+        </CartProvider>
       </AuthProvider>
     </SafeAreaView>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ScrollView, Text, Image, SafeAreaView, FlatList } from 'react-native'
+import { View, Text, Image, SafeAreaView, FlatList } from 'react-native'
 import globalStyles from '../../theme/Styles'
 import styles from '../styles/ListStyle'
 
