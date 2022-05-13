@@ -22,7 +22,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import MainNavigation from './navigation/Navigator'
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'red'
+  const isDarkMode = useColorScheme() === 'dark'
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
